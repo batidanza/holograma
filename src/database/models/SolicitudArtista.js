@@ -1,30 +1,50 @@
-/*const { DataTypes } = require('sequelize');
-const sequelize = require('../config/database');
+function solicitudArtistaData(sequelize, DataTypes) {
+  let aliasSolicitudArtista = 'SolicitudArtista'; // Nombre de la tabla
 
-const SolicitudArtista = sequelize.define('SolicitudArtista', {
-  IDArtista: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-  },
-  Imagen: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  PortafolioDescripcion: {
-    type: DataTypes.TEXT,
-  },
-  FechaSolicitud: {
-    type: DataTypes.DATE,
-  },
-  EstadoSolicitud: {
-    type: DataTypes.ENUM('En revisión', 'Aprobado', 'Rechazado'),
-    defaultValue: 'En revisión',
-  },
-});
+  let colsSolicitudArtista = {
+    IDArtista: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    Imagen: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    PortafolioDescripcion: {
+      type: DataTypes.TEXT,
+    },
+    FechaSolicitud: {
+      type: DataTypes.DATE,
+    },
+    EstadoSolicitud: {
+      type: DataTypes.ENUM('En revisión', 'Aprobado', 'Rechazado'),
+      defaultValue: 'En revisión',
+    },
+  };
 
-// Relaciones
-SolicitudArtista.belongsTo(Artista, { foreignKey: 'IDArtista' });
-SolicitudArtista.hasMany(SolicitudArtistaGestionada, { foreignKey: 'IDSolicitudArtista' });
+  let configSolicitudArtista = {
+    timestamps: false,
+    tableName: 'SolicitudArtista', // Nombre de la tabla existente en la base de datos
+  };
 
-module.exports = SolicitudArtista;
-*/
+  const SolicitudArtista = sequelize.define(
+    aliasSolicitudArtista,
+    colsSolicitudArtista,
+    configSolicitudArtista
+  );
+
+  SolicitudArtista.associate = function (modelos) {
+    SolicitudArtista.belongsTo(modelos.Artista, {
+      as: 'Artista',
+      foreignKey: 'IDArtista',
+    });
+    SolicitudArtista.hasMany(modelos.SolicitudArtistaGestionada, {
+      as: 'SolicitudesGestionadas',
+      foreignKey: 'IDSolicitudArtista',
+    });
+  };
+
+  return SolicitudArtista;
+}
+
+module.exports = solicitudArtistaData;

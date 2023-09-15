@@ -1,25 +1,45 @@
-/*const { DataTypes } = require('sequelize');
-const sequelize = require('../config/database');
+function solicitudArtistaGestionadaData(sequelize, DataTypes) {
+  let aliasSolicitudArtistaGestionada = 'SolicitudArtistaGestionada'; // Nombre de la tabla
 
-const SolicitudArtistaGestionada = sequelize.define('SolicitudArtistaGestionada', {
-  IDArtista: {
-    type: DataTypes.INTEGER,
-  },
-  IDAdministrador: {
-    type: DataTypes.INTEGER,
-  },
-  Comentario: {
-    type: DataTypes.TEXT,
-  },
-  EstadoGestion: {
-    type: DataTypes.ENUM('En revisión', 'Aprobado', 'Rechazado'),
-    defaultValue: 'En revisión',
-  },
-});
+  let colsSolicitudArtistaGestionada = {
+    IDArtista: {
+      type: DataTypes.INTEGER,
+    },
+    IDAdministrador: {
+      type: DataTypes.INTEGER,
+    },
+    Comentario: {
+      type: DataTypes.TEXT,
+    },
+    EstadoGestion: {
+      type: DataTypes.ENUM('En revisión', 'Aprobado', 'Rechazado'),
+      defaultValue: 'En revisión',
+    },
+  };
 
-// Relaciones
-SolicitudArtistaGestionada.belongsTo(Artista, { foreignKey: 'IDArtista' });
-SolicitudArtistaGestionada.belongsTo(Administrador, { foreignKey: 'IDAdministrador' });
+  let configSolicitudArtistaGestionada = {
+    timestamps: false,
+    tableName: 'SolicitudArtistaGestionada', // Nombre de la tabla existente en la base de datos
+  };
 
-module.exports = SolicitudArtistaGestionada;
-*/
+  const SolicitudArtistaGestionada = sequelize.define(
+    aliasSolicitudArtistaGestionada,
+    colsSolicitudArtistaGestionada,
+    configSolicitudArtistaGestionada
+  );
+
+  SolicitudArtistaGestionada.associate = function (modelos) {
+    SolicitudArtistaGestionada.belongsTo(modelos.Artista, {
+      as: 'Artista',
+      foreignKey: 'IDArtista',
+    });
+    SolicitudArtistaGestionada.belongsTo(modelos.Administrador, {
+      as: 'Administrador',
+      foreignKey: 'IDAdministrador',
+    });
+  };
+
+  return SolicitudArtistaGestionada;
+}
+
+module.exports = solicitudArtistaGestionadaData;

@@ -2,7 +2,7 @@ module.exports = {
   "development": {
     "username": "holograma",
     "password": "Holograma444TE",
-    "database": "holograma_44",
+    "database": "holograma_4444",
     "host": "mysql-holograma.alwaysdata.net",
     "dialect": "mysql"
   },

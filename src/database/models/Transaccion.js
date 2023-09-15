@@ -1,27 +1,43 @@
-/*const { DataTypes } = require('sequelize');
-const sequelize = require('../config/database');
+function transaccionData(sequelize, DataTypes) {
+  let aliasTransaccion = 'Transaccion'; // Nombre de la tabla
 
-const Transaccion = sequelize.define('Transaccion', {
-  FechaTransaccion: {
-    type: DataTypes.DATE,
-  },
-  IDCliente: {
-    type: DataTypes.INTEGER,
-  },
-  IDObra: {
-    type: DataTypes.INTEGER,
-  },
-  TotalTransaccion: {
-    type: DataTypes.DECIMAL(10, 2),
-  },
-  ComisionVenta: {
-    type: DataTypes.DECIMAL(10, 2),
-  },
-});
+  let colsTransaccion = {
+    FechaTransaccion: {
+      type: DataTypes.DATE,
+    },
+    IDCliente: {
+      type: DataTypes.INTEGER,
+    },
+    IDObra: {
+      type: DataTypes.INTEGER,
+    },
+    TotalTransaccion: {
+      type: DataTypes.DECIMAL(10, 2),
+    },
+    ComisionVenta: {
+      type: DataTypes.DECIMAL(10, 2),
+    },
+  };
 
-// Relaciones
-Transaccion.belongsTo(Cliente, { foreignKey: 'IDCliente' });
-Transaccion.belongsToMany(ObraDeArte, { through: 'ObraDeArte_Transaccion', foreignKey: 'IDTransaccion' });
+  let configTransaccion = {
+    timestamps: false,
+    tableName: 'Transaccion', // Nombre de la tabla existente en la base de datos
+  };
 
-module.exports = Transaccion;
-*/
+  const Transaccion = sequelize.define(aliasTransaccion, colsTransaccion, configTransaccion);
+
+  Transaccion.associate = function (modelos) {
+    Transaccion.belongsTo(modelos.Cliente, {
+      as: 'Cliente',
+      foreignKey: 'IDCliente',
+    });
+    Transaccion.belongsToMany(modelos.ObraDeArte, {
+      through: 'ObraDeArte_Transaccion',
+      foreignKey: 'IDTransaccion',
+    });
+  };
+
+  return Transaccion;
+}
+
+module.exports = transaccionData;
