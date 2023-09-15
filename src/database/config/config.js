@@ -1,23 +1,23 @@
-/*module.exports = {
+module.exports = {
   "development": {
-    "username": "",
-    "password": "",
-    "database": "",
-    "host": "mysql-seagull.alwaysdata.net",
+    "username": "holograma",
+    "password": "Holograma444TE",
+    "database": "holograma_44",
+    "host": "mysql-holograma.alwaysdata.net",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
     "password": null,
     "database": "database_test",
-    "host": "mysql-seagull.alwaysdata.net",
+    "host": "mysql-holograma.alwaysdata.net",
     "dialect": "mysql"
   },
   "production": {
     "username": "root",
     "password": null,
     "database": "database_production",
-    "host": "mysql-seagull.alwaysdata.net",
+    "host": "mysql-holograma.alwaysdata.net",
     "dialect": "mysql"
   }
-}*/
+}

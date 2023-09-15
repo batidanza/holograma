@@ -21,14 +21,14 @@ resave:false,
 saveUninitialized:false,
 }))
 
-/*db.sequelize.sync()
+db.sequelize.sync()
   .then(() => {
     console.log('Tablas de la base de datos sincronizadas');
   })
   .catch((error) => {
     console.error('Error al sincronizar las tablas:', error);
   });
-*/
+
 
 app.use('/', mainRoutes);
 
