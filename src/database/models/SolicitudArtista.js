@@ -39,7 +39,7 @@ function solicitudArtistaData(sequelize, DataTypes) {
       foreignKey: 'IDArtista',
     });
     SolicitudArtista.hasMany(modelos.SolicitudArtistaGestionada, {
-      as: 'SolicitudesGestionadas',
+      as: 'SolicitudArtistaGestionada',
       foreignKey: 'IDSolicitudArtista',
     });
   };
