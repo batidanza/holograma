@@ -1,4 +1,4 @@
-module.exports = {
+/*module.exports = {
   "development": {
     "username": "",
     "password": "",
@@ -20,4 +20,4 @@ module.exports = {
     "host": "mysql-seagull.alwaysdata.net",
     "dialect": "mysql"
   }
-}
+}*/
