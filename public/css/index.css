@@ -1,22 +1,49 @@
-
-.header-nav{
+/* Estilos para la barra de navegación vertical en el costado izquierdo */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%; /* Altura completa */
+  width: auto; /* Ancho automático para expandirse horizontalmente */
+  background-color: #fff; /* Fondo blanco */
+  padding-top: 56px; /* Ajuste para el contenido bajo la barra de navegación */
+  box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.2); /* Sombra en el lado derecho */
+  z-index: 1000; /* Z-index para superponer la barra */
   display: flex;
   flex-direction: column;
 }
 
-.btn-group{
-  width: 20vw;
+/* Estilos para el botón hamburguesa */
+.navbar-toggler {
+  position: absolute;
+  top: 10px;
+  left: 10px;
 }
 
-.imagen-logo {
-  width: 60px;
-  height: 70px;
-
+/* Estilos para los enlaces de navegación */
+.navbar-nav {
+  margin-top: 10px;
+  padding-left: 10px;
+  flex-direction: column;
+  flex-grow: 1; /* Hace que los enlaces ocupen todo el espacio vertical disponible */
 }
 
-.header-nav a {
-  margin-top: 100px;
+.navbar-nav .nav-item {
+  margin-left: 0;
 }
 
+.navbar-nav .nav-link {
+  padding: 8px 15px;
+}
 
+/* Estilos para el logotipo */
+.navbar-brand img {
+  display: block;
+  margin: 0 auto;
+}
 
+/* Estilos para el contenido principal */
+.content {
+  margin-left: 250px; /* Ancho de la barra de navegación */
+  padding: 15px;
+}
