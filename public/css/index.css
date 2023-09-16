@@ -1,0 +1,22 @@
+
+.header-nav{
+  display: flex;
+  flex-direction: column;
+}
+
+.btn-group{
+  width: 20vw;
+}
+
+.imagen-logo {
+  width: 60px;
+  height: 70px;
+
+}
+
+.header-nav a {
+  margin-top: 100px;
+}
+
+
+
