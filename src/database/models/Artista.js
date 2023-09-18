@@ -21,10 +21,7 @@ function artistaData(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    Contraseña: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
+ 
     DescripcionArtista: {
       type: DataTypes.TEXT,
     },

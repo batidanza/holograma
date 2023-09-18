@@ -2,6 +2,8 @@ const express = require('express');
 const db = require('./src/database/models'); 
 
 const mainRoutes = require('./src/routes/mainRoutes')
+const artistasRoutes = require('./src/routes/artistasRoutes'); 
+
 
 const app = express ();
 const path = require ('path');
@@ -31,6 +33,8 @@ db.sequelize.sync()
 
 
 app.use('/', mainRoutes);
+
+app.use('/artistas', artistasRoutes);
 
 
 app.use ('*', function (req, res){

@@ -1,11 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<head>
   <%- include ('partials/head.ejs') %>
+  <link rel="stylesheet" type="text/css" href="/css/artistas.css"> 
+</head>
+ 
 
 <body>
 
   <%- include ('partials/header.ejs') %>
   
-</body>
+
+    <main>
+      <div class="buscador mt-5 mx-auto text-center">
+        <h1 class="titulo">ARTISTAS</h1>
+        <br>
+        <div class="search container-sm">
+          <nav class="navbar navbar-#B0DEE4 bg-#B0DEE4">
+            <form class="form-inlin w-100">
+              <input class="form-control mx-auto" type="search" placeholder="Buscar" aria-label="Search">
+            </form>
+          </nav>
+        </div>
+      </div>
+        <br>
+        <div class="artistas-contenedor">
+          <% for (let i = 0; i < artistasRegistrados.length; i++) { %>
+            <article class="artista">
+              <div class="imagen">
+                <a href="/artistas/artistas/<%= artistasRegistrados[i].id %>">
+                  <img src="<%= artistasRegistrados[i].Imagen%>" class="product1" alt="<%= artistasRegistrados[i].Nombre %>">
+  
+  
+                </a>
+                <div class="linea"></div>
+                <div class="detalle">
+                  <p class="nombre"><%= artistasRegistrados[i].Nombre %></p>
+                 
+                
+                </div>
+              </div>
+            </article>
+          <% } %>
+        </div>
+        
+      
+      <br>
+      
+
+
+    </main>
+    
+  </body>
+
 </html>
