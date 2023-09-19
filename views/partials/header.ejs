@@ -1,30 +1,56 @@
-<nav class="navbar">
+<nav class="navbar navbar-expand-lg">
   <div class="container">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="/">
       <img src="/img/logo.jpg" alt="Bootstrap" width="45" height="34">
     </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+
+    <!-- Eliminamos el botón de hamburguesa -->
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="artistas/artistas">Artistas</a>
+        <!-- Opción "Artistas" con menú desplegable -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="artistasDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Art
+          </a>
+          <div class="dropdown-menu" aria-labelledby="artistasDropdown">
+            <a class="dropdown-item" href="/artistas/artistas">Artistas </a>
+            <a class="dropdown-item" href="/obras/obras">Collection</a>
+            <a class="dropdown-item" href="#">Audio Samples</a>
+            <a class="dropdown-item" href="#">Videos</a>
+            <a class="dropdown-item" href="#">Essays</a>
+            <a class="dropdown-item" href="#">Podcast</a>
+          </div>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Exposiciones</a>
+
+        <!-- Otras opciones de navegación con menús desplegables -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="exposicionesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Exhibitions
+          </a>
+          <div class="dropdown-menu" aria-labelledby="exposicionesDropdown">
+            <a class="dropdown-item" href="#"> Latest exhibitions </a>
+            <a class="dropdown-item" href="#"> Coming soon </a>
+            <!-- Agrega más opciones aquí si es necesario -->
+          </div>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Ferias</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Obras</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="artistas/aplicacionArtistas">Aplicá</a>
-        </li>
+        
+<li class="nav-item">
+  <a class="nav-link" href="/artistas/aplicacionArtistas" id="aplicaLink">Apply</a>
+</li>
+<script>
+  // Obtén una referencia al botón "Aplica"
+  const aplicaButton = document.getElementById('aplicaLink');
+
+  // Verifica si estamos en la vista "aplica" (por ejemplo, mediante un atributo en el body)
+  const isAplicaView = document.body.getAttribute('data-view') === 'aplica';
+
+  // Oculta el botón "Aplica" si estamos en la vista "aplica"
+  if (isAplicaView) {
+    aplicaButton.style.display = 'none';
+  }
+</script>
+
       </ul>
     </div>
-  
   </div>
 </nav>

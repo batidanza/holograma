@@ -1,24 +1,30 @@
-.titulo{
-  font-family: '';
+.titulo {
+  font-family: 'Exo 2', sans-serif;
   font-size: 30px;
+  font-weight: 1;
   color: #27343a;
   text-align: center;
   font-style: bold;
+
     }
 
 /* CUADRO DE BÚSQUEDA DE PRODUCTO */
 .search input[type="search"] {
-  font-family: '';
+  font-family: 'Exo 2', sans-serif;
   font-size: 12px;
-  color: #333333;
+  color: #020202;
 }
 
 .search .form-inline label {
-  font-family: 'Klee One';
+  font-family: 'Exo 2', sans-serif;
   font-weight: bold;
   text-transform: uppercase;
 }
-
+.search-container {
+ border-radius: 1;
+ width: 50vw;
+ 
+}
 
 .d-flex {
   width: 30em;
@@ -37,7 +43,6 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url("../img/fondoproducts.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -65,12 +70,13 @@ body::before {
   background-color: white;
   border: 1px solid #1a1c1d;
   border-radius: 3px;
-  width: 550px; /* Cambia el ancho a 250px */
-
+  width: calc(50% - 20px); /* Establece el ancho del artista al 50% del contenedor con un margen de 20px entre ellos */
+  box-sizing: border-box; /* Incluye el borde y el relleno en el ancho total */
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 10px;
+  margin-bottom: 20px; /* Agrega margen inferior para separar las filas de artistas */
 }
 
 .artista .imagen {

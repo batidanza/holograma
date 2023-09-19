@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include ('partials/head.ejs') %>
+<body>
+
+  <%- include ('partials/header.ejs') %>
+  <main>
+    <div class="buscador mt-5 mx-auto text-center">
+        <h1 class="titulo">OBRAS</h1>
+        <div class="search container-sm">
+          <nav class="navbar navbar-#B0DEE4 bg-#B0DEE4">
+            <form class="form-inlin w-100">
+              <input class="form-control mx-auto" type="search" placeholder= "¿Qué producto estás buscando?" aria-label="Search">
+      </div>
+      </div>
+   
+    <div class="contenedor">
+
+          <% for (let i = 0; i < obrasRegistradas.length; i++) { %>
+            <article class="producto">
+              <div class="imagen">
+                
+                <a href="/productos/idProducto/<%= obrasRegistradas[i].id %>">
+                  <img src="<%= obrasRegistradas[i].Imagen %>" class="product1">
+                </a>
+                <div class="linea"></div>
+                <div class="detalle">
+                  <p class="nombre"><%= obrasRegistradas[i].Titulo %></p>
+                  <p class="nombre"><%= obrasRegistradas[i].Dimensiones %></p>
+                  <p class="nombre"><%= obrasRegistradas[i].Descripcion %></p>
+                  <p class="precio">US $ <%= obrasRegistradas[i].Precio %></p>
+                </div>
+              </div>
+            </article>
+          <% } %>
+</div>
+  </main>
+</body>
+</html>
+
