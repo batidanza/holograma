@@ -1,27 +1,38 @@
 
-nav {
-
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 70px; /* Ancho de la barra de navegación */
+  background-color: #fff; /* Cambia el color de fondo según tu preferencia */
   box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column; /* Los elementos se apilan verticalmente */
 }
 
-
-.navbar-toggler {
-  position: absolute;
-  top: 10px;
-  left: 10px;
+.imagen-index {
+  background-image: url('https://res.cloudinary.com/dpnrapsvi/image/upload/e_improve:outdoor/Artistas/llkim11nghzihez2kugs.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  /* Otros estilos CSS para el cuerpo de la página */
 }
 
+/* Estilo para ocultar el contenido de "Art" inicialmente */
+.art-content {
+  display: none;
+}
 
-
+/* Estilo para el contenido dentro de "Art" */
 .navbar-nav {
-  margin-top: 10px;
-  padding-left: 10px;
-  flex-direction: column;
-  flex-grow: 1; 
+  list-style: none;
+  padding: 10px 0;
 }
 
 .navbar-nav .nav-item {
-  margin-left: 0;
+  margin: 0;
 }
 
 .navbar-nav .nav-link {
@@ -29,13 +40,64 @@ nav {
 }
 
 
-.navbar-brand img {
-  display: block;
-  margin: 0 auto;
+.navbar-expanded {
+  width: 300px; 
+}
+.art-options {
+  font-size: 30px; /* Tamaño de letra personalizado */
+  font-family: 'Oswald', sans-serif;
+}
+.imagen-index {
+  background-image: url('https://res.cloudinary.com/dpnrapsvi/image/upload/e_improve:outdoor/Artistas/llkim11nghzihez2kugs.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
 
-.content {
-  margin-left: 250px; 
+p{
+  color: rgb(255, 255, 255);
+}
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+  
+}
+.content-right {
+  margin-left: 500px;
+}
+.custom-button {
+  background-color: #515151; /* Color de fondo personalizado (en este caso, naranja) */
+  color: #FFFFFF; /* Color de texto */
+  border: none; /* Sin borde */
+  padding: 10px 20px; /* Relleno del botón */
+  cursor: pointer; /* Cambia el cursor al pasar por encima */
+
+}
+.content-window {
+  display: inline-block;
+  background-color: #fff; /* Fondo blanco */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Sombra */
   padding: 15px;
+  max-width: 600px;
+  max-height:700px;
+  margin-top: 60px;
+
+}
+.content-right .container {
+
+  display: inline-block;
+  max-width: 600px;
+  max-height:670px
+}
+.fit-image {
+  display: inline-block;
 }

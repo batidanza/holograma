@@ -12,7 +12,7 @@
 .search input[type="search"] {
   font-family: 'Exo 2', sans-serif;
   font-size: 12px;
-  color: #020202;
+  color: #181818;
 }
 
 .search .form-inline label {
@@ -23,7 +23,6 @@
 .search-container {
  border-radius: 1;
  width: 50vw;
- 
 }
 
 .d-flex {
@@ -97,7 +96,9 @@ body::before {
 }
 
 .artista .detalle {
+  font-family: 'Exo 2', sans-serif;
   text-align: center;
+
 }
 
 .artista:hover {
@@ -105,8 +106,11 @@ body::before {
 }
 
 .artista {
-  font-family: 'Klee One';
+  font-family: 'Exo 2', sans-serif;
   margin: 0;
+}
+.nombre{
+  color: #1a1c1d;
 }
 
 .product {

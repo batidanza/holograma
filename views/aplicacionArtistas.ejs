@@ -4,12 +4,12 @@
   <%- include ('partials/head.ejs') %>
   <title>Aplicá</title>
 </head>
-<body>
+<body class="aplicacion-artistas">
   <%- include ('partials/header.ejs') %>
   <form action="/artistas/aplicacionArtistas" method="POST" enctype="multipart/form-data">
     
     <div class="input-group">
-      <span class="input-group-text">First and last name</span>
+      <span class="input-group-text">NAME</span>
       <input type="text" aria-label="First name" class="form-control" name="Nombre">
     </div>
     <br>
@@ -19,7 +19,7 @@
     </div>
     <br>
     <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+      <label for="exampleFormControlTextarea1" class="form-label">descripcion</label>
       <input class="form-control" id="exampleFormControlTextarea1" rows="3" name="DescripcionArtista"></input>
     </div>
     <br>
