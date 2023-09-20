@@ -111,6 +111,8 @@ body::before {
 }
 .nombre{
   color: #1a1c1d;
+  font-size: large;
+  font-weight: 1000;
 }
 
 .product {
