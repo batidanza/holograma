@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include ('partials/head.ejs') %>
+
+<body>
+  <%- include ('partials/head.ejs') %>
+  <link rel="stylesheet"  type="text/css" href="/css/obras.css">
+</body>
 <body>
 
   <%- include ('partials/header.ejs') %>
@@ -20,15 +24,17 @@
             <article class="producto">
               <div class="imagen">
                 
-                <a href="/productos/idProducto/<%= obrasRegistradas[i].id %>">
+                <a href="/obras/obraDetalle<%= obrasRegistradas[i].id %>">
                   <img src="<%= obrasRegistradas[i].Imagen %>" class="product1">
                 </a>
                 <div class="linea"></div>
                 <div class="detalle">
                   <p class="nombre"><%= obrasRegistradas[i].Titulo %></p>
-                  <p class="nombre"><%= obrasRegistradas[i].Dimensiones %></p>
-                  <p class="nombre"><%= obrasRegistradas[i].Descripcion %></p>
+                  <p class="detalle"><%= obrasRegistradas[i].Descripcion %></p>
                   <p class="precio">US $ <%= obrasRegistradas[i].Precio %></p>
+                  <p class="autor">Autor: <%= obrasRegistradas[i].Artista %></p>
+
+               
                 </div>
               </div>
             </article>

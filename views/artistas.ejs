@@ -21,16 +21,16 @@
           <% for (let i = 0; i < artistasRegistrados.length; i++) { %>
             <article class="artista">
               <div class="imagen">
-                <a href="/artistas/artistas/<%= artistasRegistrados[i].id %>">
-                  <img src="<%= artistasRegistrados[i].Imagen%>" class="product1" alt="<%= artistasRegistrados[i].Nombre %>">
-  
-  
+                <a href="/artistas/detalleArtista/<%= artistasRegistrados[i].ID %>">
+
+                  <img src="<%= artistasRegistrados[i].Imagen %>" class="product1" alt="<%= artistasRegistrados[i].Nombre %>">
                 </a>
+                
                 <div class="linea"></div>
                 <div class="detalle">
                   <p class="nombre"><%= artistasRegistrados[i].Nombre %></p>
-                 
-                
+                  <p class="nombre"><%= artistasRegistrados[i].DescripcionArtista %></p>
+      
                 </div>
               </div>
             </article>

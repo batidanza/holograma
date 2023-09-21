@@ -30,6 +30,10 @@ function obraDeArteData(sequelize, DataTypes) {
     IDArtista: {
       type: DataTypes.INTEGER,
     },
+    Imagen: {
+      type: DataTypes.STRING, // Puedes ajustar el tipo de datos según tus necesidades (STRING es común para URLs de imágenes)
+      allowNull: false, // Establece la condición NOT NULL
+    },
   };
 
   let configObraDeArte = {

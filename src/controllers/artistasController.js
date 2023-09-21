@@ -13,6 +13,23 @@ const artistasController = {
     }
   },
 
+  detalleArtista: async (req, res) => {
+    try {
+      const ArtistaID = req.params.ID;
+      const Artista = await db.Artista.findByPk(ArtistaID);
+  
+      if (!Artista) {
+        return res.status(404).send("Artista no encontrado");
+      }
+  
+      res.render('detalleArtista', { Artista });
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('Error al obtener los detalles del artista');
+    }
+  },
+  
+
 
 
   aplica: (req, res) => {
@@ -46,6 +63,8 @@ const artistasController = {
       res.status(500).send(`Error al crear la solicitud ${error.message}`);
     }
   },
+
+
 }
 
 

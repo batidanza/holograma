@@ -20,19 +20,19 @@ const obrasController = require ('../controllers/obrasController');
     }),
     ]*/
 
-let artistamulterDiskStorage = multer.diskStorage({
+let obrasmulterDiskStorage = multer.diskStorage({
     destination: (req, file, cb) => 
-{let artistaimgfolder = path.join(__dirname, '../../public/img');
- cb(null, artistaimgfolder)
+{let obraimgfolder = path.join(__dirname, '../../public/img');
+ cb(null, obraimgfolder)
 },
     filename: (req, file, cb) => {
-let artistaimg = Date.now() + file.originalname;
-cb(null, artistaimg);   
+let obraimg = Date.now() + file.originalname;
+cb(null, obraimg);   
    },
 });
 
 
-let artistaimgUpload = multer({ storage : artistamulterDiskStorage });
+let obraimgUpload = multer({ storage : obrasmulterDiskStorage });
 
 cloudinary.config({ 
     cloud_name: 'dpnrapsvi', 
@@ -56,6 +56,7 @@ cloudinary.config({
   router.get('/obras', obrasController.obras );
 
   router.get('/obraCreacion',obrasController.formCreate)
+
 
   router.post('/obraCreacion',upload.array('Imagen') , obrasController.create)
 

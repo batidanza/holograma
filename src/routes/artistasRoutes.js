@@ -55,6 +55,8 @@ cloudinary.config({
 
 router.get('/artistas', artistasController.artistas);
 
+router.get('/detalleArtista/:ID', artistasController.detalleArtista)
+
 
 router.get('/aplicacionArtistas', artistasController.aplica)
 
