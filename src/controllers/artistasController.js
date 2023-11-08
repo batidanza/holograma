@@ -3,15 +3,16 @@ const bcrypt = require('bcryptjs');
 const db = require('../database/models');
 
 const artistasController = {
-  artistas: async (req, res) => {
-    try {
-      const artistasRegistrados = await db.Artista.findAll();
-      res.render("artistas", { artistasRegistrados });
-    } catch (error) {
-      console.error(error);
-      res.status(500).send('Error al obtener Artistas');
-    }
-  },
+
+    artistas: async (req, res) => {
+      try {
+        const artistasRegistrados = await db.Artista.findAll();
+        res.json(artistasRegistrados);
+      } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Error al obtener Artistas' });
+      }
+    },
 
   detalleArtista: async (req, res) => {
     try {

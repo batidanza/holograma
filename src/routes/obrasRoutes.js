@@ -57,7 +57,8 @@ cloudinary.config({
 
   router.get('/obraCreacion',obrasController.formCreate)
 
-
   router.post('/obraCreacion',upload.array('Imagen') , obrasController.create)
+
+  router.get ('/sketches', obrasController.sketchControl)
 
 module.exports = router;

@@ -11,11 +11,13 @@ const app = express ();
 const path = require ('path');
 const methodOverride = require('method-override');
 const session = require('express-session');
+const cors = require('cors');
 
 
 app.use(express.static(path.resolve(__dirname, './public')));
 
 app.set ('view engine', 'ejs');
+app.use(cors());
 
 app.use(express.urlencoded({extended: false})) /
 app.use(express.json()) 

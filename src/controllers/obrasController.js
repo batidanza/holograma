@@ -3,6 +3,14 @@ const bcrypt = require('bcryptjs');
 const db = require('../database/models');
 
 const obrasController = {
+
+  sketchControl: (req, res) => {
+    
+      res.render("sketches")
+
+  },
+
+
   obras: async (req, res) => {
     try {
       const obrasRegistradas = await db.ObraDeArte.findAll({
