@@ -6,7 +6,7 @@ const multer = require('multer');
 //const { body } = require('express-validator');
 const { CloudinaryStorage } = require('multer-storage-cloudinary');
 
-const artistasController = require ('../controllers/artistasController');
+const artistasController = require ('../controllers/artistController');
 
 //middleware que se usa en la ruta POST de register
 /*const validations = [
@@ -21,47 +21,41 @@ const artistasController = require ('../controllers/artistasController');
     }),
     ]*/
 
-let artistamulterDiskStorage = multer.diskStorage({
+let artistmulterDiskStorage = multer.diskStorage({
     destination: (req, file, cb) => 
-{let artistaimgfolder = path.join(__dirname, '../../public/img');
- cb(null, artistaimgfolder)
+{let artistimgfolder = path.join(__dirname, '../../public/img');
+ cb(null, artistimgfolder)
 },
     filename: (req, file, cb) => {
-let artistaimg = Date.now() + file.originalname;
-cb(null, artistaimg);   
+let artistimg = Date.now() + file.originalname;
+cb(null, artistimg);   
    },
 });
 
-
-let artistaimgUpload = multer({ storage : artistamulterDiskStorage });
+let artistImageUpload = multer({ storage : artistmulterDiskStorage });
 
 cloudinary.config({ 
     cloud_name: 'dpnrapsvi', 
     api_key: '874593837933416', 
     api_secret: 'c_a2SUynA5J4O6y5yFCbL6HzADA' 
   });
-  
-  
+   
   const storage = new CloudinaryStorage({
     cloudinary: cloudinary,
     params: {
       folder: 'Artistas',
       allowed_formats: ['jpg', 'png'], 
-      transformation: [{ width: 500, height: 500, crop: 'limit' }], 
     },
   });
 
   const upload = multer({ storage: storage });
 
+router.get('/artists', artistasController.artists);
 
-router.get('/artistas', artistasController.artistas);
+router.get('/artistDetail/:ID', artistasController.artistDetail)
 
-router.get('/detalleArtista/:ID', artistasController.detalleArtista)
+router.get('/artistRequest', artistasController.apply)
 
-
-router.get('/aplicacionArtistas', artistasController.aplica)
-
-
-router.post('/aplicacionArtistas', upload.array('Imagen'), artistasController.solicitudAplicacion);
+router.post('/artistRequest', upload.array('Image'), artistasController.applicationRequest);
 
 module.exports = router;

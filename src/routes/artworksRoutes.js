@@ -5,7 +5,7 @@ const multer = require('multer');
 //const { body } = require('express-validator');
 const { CloudinaryStorage } = require('multer-storage-cloudinary');
 
-const obrasController = require ('../controllers/obrasController');
+const obrasController = require ('../controllers/artworkController');
 
 //middleware que se usa en la ruta POST de register
 /*const validations = [
@@ -31,8 +31,7 @@ cb(null, obraimg);
    },
 });
 
-
-let obraimgUpload = multer({ storage : obrasmulterDiskStorage });
+let artworkimgUpload = multer({ storage : obrasmulterDiskStorage });
 
 cloudinary.config({ 
     cloud_name: 'dpnrapsvi', 
@@ -40,24 +39,22 @@ cloudinary.config({
     api_secret: 'c_a2SUynA5J4O6y5yFCbL6HzADA' 
   });
   
-  
   const storage = new CloudinaryStorage({
     cloudinary: cloudinary,
     params: {
       folder: 'Artistas',
       allowed_formats: ['jpg', 'png'], 
-      transformation: [{ width: 500, height: 500, crop: 'limit' }], 
+
     },
   });
 
   const upload = multer({ storage: storage });
 
+  router.get('/artworks', obrasController.artwork );
 
-  router.get('/obras', obrasController.obras );
+  router.get('/createArtwork',obrasController.createArt)
 
-  router.get('/obraCreacion',obrasController.formCreate)
-
-  router.post('/obraCreacion',upload.array('Imagen') , obrasController.create)
+  router.post('/createArtwork',upload.array('Image') , obrasController.createArtwork)
 
   router.get ('/sketches', obrasController.sketchControl)
 

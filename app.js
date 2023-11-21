@@ -1,18 +1,14 @@
 const express = require('express');
 const db = require('./src/database/models'); 
 
-const mainRoutes = require('./src/routes/mainRoutes')
-const artistasRoutes = require('./src/routes/artistasRoutes'); 
-const obrasRoutes = require('./src/routes/obrasRoutes'); 
-
-
+const artistsRoutes = require('./src/routes/artistsRoutes'); 
+const artworksRoutes = require('./src/routes/artworksRoutes'); 
 
 const app = express ();
 const path = require ('path');
 const methodOverride = require('method-override');
 const session = require('express-session');
 const cors = require('cors');
-
 
 app.use(express.static(path.resolve(__dirname, './public')));
 
@@ -29,24 +25,18 @@ saveUninitialized:false,
 
 db.sequelize.sync()
   .then(() => {
-    console.log('Tablas de la base de datos sincronizadas');
+    console.log('Synchronized database tables');
   })
   .catch((error) => {
-    console.error('Error al sincronizar las tablas:', error);
+    console.error('Error at synchronized database tables', error);
   });
 
+app.use('/artists', artistsRoutes);
 
-app.use('/', mainRoutes);
-
-app.use('/artistas', artistasRoutes);
-
-app.use('/obras', obrasRoutes )
-
-
+app.use('/artworks', artworksRoutes )
 
 app.use ('*', function (req, res){
-  res.send("ruta erronea")
+  res.send("WRONG ROUTE")
 });
 
-app.listen(3002, () => console.log('Esto fue exitoso'));
-
+app.listen(3002, () => console.log('Server running'));

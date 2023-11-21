@@ -1,43 +1,43 @@
-function transaccionData(sequelize, DataTypes) {
-  let aliasTransaccion = 'Transaccion'; // Nombre de la tabla
+function transactionData(sequelize, DataTypes) {
+  let transactionTableName = 'Transaction'; // Name of the table
 
-  let colsTransaccion = {
-    FechaTransaccion: {
+  let transactionColumns = {
+    TransactionDate: {
       type: DataTypes.DATE,
     },
-    IDCliente: {
+    ClientID: {
       type: DataTypes.INTEGER,
     },
-    IDObra: {
+    ArtworkID: {
       type: DataTypes.INTEGER,
     },
-    TotalTransaccion: {
+    TotalTransaction: {
       type: DataTypes.DECIMAL(10, 2),
     },
-    ComisionVenta: {
+    SalesCommission: {
       type: DataTypes.DECIMAL(10, 2),
     },
   };
 
-  let configTransaccion = {
+  let transactionConfig = {
     timestamps: false,
-    tableName: 'Transaccion', // Nombre de la tabla existente en la base de datos
+    tableName: 'Transaction', // Name of the table in the database
   };
 
-  const Transaccion = sequelize.define(aliasTransaccion, colsTransaccion, configTransaccion);
+  const Transaction = sequelize.define(transactionTableName, transactionColumns, transactionConfig);
 
-  Transaccion.associate = function (modelos) {
-    Transaccion.belongsTo(modelos.Cliente, {
-      as: 'Cliente',
-      foreignKey: 'IDCliente',
+  Transaction.associate = function (models) {
+    Transaction.belongsTo(models.Client, {
+      as: 'Client',
+      foreignKey: 'ClientID',
     });
-    Transaccion.belongsToMany(modelos.ObraDeArte, {
-      through: 'ObraDeArte_Transaccion',
-      foreignKey: 'IDTransaccion',
+    Transaction.belongsToMany(models.Artwork, {
+      through: 'ArtworkTransaction',
+      foreignKey: 'TransactionID',
     });
   };
 
-  return Transaccion;
+  return Transaction;
 }
 
-module.exports = transaccionData;
+module.exports = transactionData;
