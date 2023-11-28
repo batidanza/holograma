@@ -54,6 +54,38 @@ const artworksController = {
       res.status(500).json({ error: `Error publishing the artwork: ${error.message}` });
     }
   },
+
+ getArtworkById: async (req, res) => {
+    try {
+      const artworkId = req.params.id; // Obtén el ID de la obra de los parámetros de la solicitud
+      const artworkDetails = await db.Artwork.findByPk(artworkId, {
+        include: [{ model: db.Artist, as: 'Artist' }]
+      });
+
+      if (!artworkDetails) {
+        return res.status(404).json({ error: 'Artwork not found' });
+      }
+
+      res.json(artworkDetails); // Responde con los detalles de la obra como JSON
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: `Error obtaining Artwork details: ${error.message}` });
+    }
+  },
+
+   getArtworksByArtist: async (req, res) => {
+    try {
+      const artistId = req.params.artistId;
+      const artworks = await db.Artwork.findAll({ where: { ArtistID: artistId } });
+  
+      res.json(artworks);
+    } catch (error) {
+      console.error(`Error obtaining artworks for artist with ID ${artistId}:`, error);
+      res.status(500).json({ error: 'Error obtaining artworks for artist' });
+    }
+  }
 };
+
+
 
 module.exports = artworksController;

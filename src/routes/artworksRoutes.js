@@ -5,7 +5,7 @@ const multer = require('multer');
 //const { body } = require('express-validator');
 const { CloudinaryStorage } = require('multer-storage-cloudinary');
 
-const obrasController = require ('../controllers/artworkController');
+const artworkController = require ('../controllers/artworkController');
 
 //middleware que se usa en la ruta POST de register
 /*const validations = [
@@ -50,12 +50,16 @@ cloudinary.config({
 
   const upload = multer({ storage: storage });
 
-  router.get('/artworks', obrasController.artwork );
+  router.get('/artworks', artworkController.artwork );
 
-  router.get('/createArtwork',obrasController.createArt)
+  router.get('/artworks/:id', artworkController.getArtworkById);
 
-  router.post('/createArtwork',upload.array('Image') , obrasController.createArtwork)
+  router.get('/byArtist/:artistId', artworkController.getArtworksByArtist);
 
-  router.get ('/sketches', obrasController.sketchControl)
+  router.get('/createArtwork',artworkController.createArt)
+
+  router.post('/createArtwork',upload.array('Image') , artworkController.createArtwork)
+
+  router.get ('/sketches',artworkController.sketchControl)
 
 module.exports = router;
