@@ -34,6 +34,9 @@ function artworkData(sequelize, DataTypes) {
       type: DataTypes.STRING, // You can adjust the data type according to your needs (STRING is common for image URLs)
       allowNull: false, // Set the NOT NULL condition
     },
+    Materials: {
+      type: DataTypes.STRING, // Puedes ajustar el tipo de dato según tus necesidades
+    },
   };
 
   let artworkConfig = {
