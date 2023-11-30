@@ -32,6 +32,7 @@ const artworksController = {
   createArtwork: async (req, res) => {
     try {
       const newArtwork = req.body;
+      console.log('req.body:', req.body); 
       const artworkImageUpload = req.files; 
       const firstImage = artworkImageUpload[0].filename;
   
@@ -45,7 +46,10 @@ const artworksController = {
         CreationDate: newArtwork.CreationDate,
         Price: newArtwork.Price,
         Image: cloudinaryImageUrl,
+        Materials: newArtwork.Materials,
+        Dimensions: newArtwork.Dimensions,
         ArtistID: newArtwork.ArtistID,
+
       });
 
       res.json({ message: "Artwork created successfully" }); // Respond with a JSON message

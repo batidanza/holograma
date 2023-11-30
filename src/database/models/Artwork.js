@@ -18,7 +18,7 @@ function artworkData(sequelize, DataTypes) {
       type: DataTypes.DATE,
     },
     Dimensions: {
-      type: DataTypes.STRING(50),
+      type: DataTypes.STRING(50), // Ajusta el tipo de dato según tus necesidades
     },
     Price: {
       type: DataTypes.DECIMAL(10, 2),
@@ -37,6 +37,7 @@ function artworkData(sequelize, DataTypes) {
     Materials: {
       type: DataTypes.STRING, // Puedes ajustar el tipo de dato según tus necesidades
     },
+    
   };
 
   let artworkConfig = {
