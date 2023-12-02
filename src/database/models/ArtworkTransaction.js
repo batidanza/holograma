@@ -1,5 +1,5 @@
 function artworkTransactionData(sequelize, DataTypes) {
-  let artworkTransactionTableName = 'ArtworkTransaction'; // Name of the table
+  let artworkTransactionTableName = 'ArtworkTransaction'; 
 
   let artworkTransactionColumns = {
     ArtworkID: {
@@ -12,7 +12,7 @@ function artworkTransactionData(sequelize, DataTypes) {
 
   let artworkTransactionConfig = {
     timestamps: false,
-    tableName: 'ArtworkTransaction', // Name of the table in the database
+    tableName: 'ArtworkTransaction',
   };
 
   const ArtworkTransaction = sequelize.define(

@@ -1,5 +1,5 @@
 function administratorData(sequelize, DataTypes) {
-  let adminTableName = 'Administrator'; // Name of the table
+  let adminTableName = 'Administrator';
 
   let adminColumns = {
     ID: {
@@ -23,7 +23,7 @@ function administratorData(sequelize, DataTypes) {
 
   let adminConfig = {
     timestamps: false,
-    tableName: 'Administrator', // Name of the table in the database
+    tableName: 'Administrator', 
   };
 
   const Administrator = sequelize.define(adminTableName, adminColumns, adminConfig);

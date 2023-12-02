@@ -1,5 +1,5 @@
 function artistData(sequelize, DataTypes) {
-  let artistTableName = 'Artist'; // Name of the table
+  let artistTableName = 'Artist'; 
 
   let artistColumns = {
     ID: {
@@ -36,7 +36,7 @@ function artistData(sequelize, DataTypes) {
 
   let artistConfig = {
     timestamps: false,
-    tableName: 'Artist', // Name of the table in the database
+    tableName: 'Artist', 
   };
 
   const Artist = sequelize.define(artistTableName, artistColumns, artistConfig);

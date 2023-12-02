@@ -5,7 +5,7 @@ const multer = require('multer');
 
 const { CloudinaryStorage } = require('multer-storage-cloudinary');
 
-const artistasController = require ('../controllers/artistController');
+const userController= require ('../controllers/userController');
 
 cloudinary.config({ 
     cloud_name: 'dpnrapsvi', 
@@ -16,19 +16,17 @@ cloudinary.config({
   const storage = new CloudinaryStorage({
     cloudinary: cloudinary,
     params: {
-      folder: 'Artistas',
+      folder: 'Users',
       resource_type: 'auto',
     },
   });
 
   const upload = multer({ storage: storage });
 
-router.get('/artists', artistasController.artists);
+  router.get('/users', userController.getUsers);
 
-router.get('/artistDetail/:ID', artistasController.artistDetail)
+  router.post('/createUser', userController.createUser)
 
-router.get('/artistRequest', artistasController.apply)
 
-router.post('/artistRequest', upload.array('Image'), artistasController.applicationRequest);
+module.exports = router
 
-module.exports = router;

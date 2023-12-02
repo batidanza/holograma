@@ -1,5 +1,5 @@
 function artworkData(sequelize, DataTypes) {
-  let artworkTableName = 'Artwork'; // Name of the table
+  let artworkTableName = 'Artwork'; 
 
   let artworkColumns = {
     ID: {
@@ -18,7 +18,7 @@ function artworkData(sequelize, DataTypes) {
       type: DataTypes.DATE,
     },
     Dimensions: {
-      type: DataTypes.STRING(50), // Ajusta el tipo de dato según tus necesidades
+      type: DataTypes.STRING(50),
     },
     Price: {
       type: DataTypes.DECIMAL(10, 2),
@@ -31,18 +31,18 @@ function artworkData(sequelize, DataTypes) {
       type: DataTypes.INTEGER,
     },
     Image: {
-      type: DataTypes.STRING, // You can adjust the data type according to your needs (STRING is common for image URLs)
-      allowNull: false, // Set the NOT NULL condition
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     Materials: {
-      type: DataTypes.STRING, // Puedes ajustar el tipo de dato según tus necesidades
+      type: DataTypes.STRING,
     },
     
   };
 
   let artworkConfig = {
     timestamps: false,
-    tableName: 'Artwork', // Name of the table in the database
+    tableName: 'Artwork',
   };
 
   const Artwork = sequelize.define(artworkTableName, artworkColumns, artworkConfig);

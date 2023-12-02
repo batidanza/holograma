@@ -1,5 +1,5 @@
 function exhibitionData(sequelize, DataTypes) {
-  let exhibitionTableName = 'Exhibition'; // Name of the table
+  let exhibitionTableName = 'Exhibition'
 
   let exhibitionColumns = {
     ID: {
@@ -39,7 +39,7 @@ function exhibitionData(sequelize, DataTypes) {
 
   let exhibitionConfig = {
     timestamps: false,
-    tableName: 'Exhibition', // Name of the table in the database
+    tableName: 'Exhibition', 
   };
 
   const Exhibition = sequelize.define(exhibitionTableName, exhibitionColumns, exhibitionConfig);

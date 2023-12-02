@@ -1,5 +1,5 @@
 function clientData(sequelize, DataTypes) {
-  let clientTableName = 'Client'; // Name of the table
+  let clientTableName = 'Client'; 
 
   let clientColumns = {
     ID: {
@@ -25,7 +25,7 @@ function clientData(sequelize, DataTypes) {
 
   let clientConfig = {
     timestamps: false,
-    tableName: 'Client', // Name of the table in the database
+    tableName: 'Client',
   };
 
   const Client = sequelize.define(clientTableName, clientColumns, clientConfig);

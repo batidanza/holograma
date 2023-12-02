@@ -1,5 +1,5 @@
 function transactionData(sequelize, DataTypes) {
-  let transactionTableName = 'Transaction'; // Name of the table
+  let transactionTableName = 'Transaction'; 
 
   let transactionColumns = {
     TransactionDate: {
@@ -21,7 +21,7 @@ function transactionData(sequelize, DataTypes) {
 
   let transactionConfig = {
     timestamps: false,
-    tableName: 'Transaction', // Name of the table in the database
+    tableName: 'Transaction', 
   };
 
   const Transaction = sequelize.define(transactionTableName, transactionColumns, transactionConfig);

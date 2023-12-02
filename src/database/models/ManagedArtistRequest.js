@@ -1,5 +1,5 @@
 function managedArtistRequestData(sequelize, DataTypes) {
-  let managedArtistRequestTableName = 'ManagedArtistRequest'; // Name of the table
+  let managedArtistRequestTableName = 'ManagedArtistRequest'; 
 
   let managedArtistRequestColumns = {
     ArtistID: {
@@ -19,7 +19,7 @@ function managedArtistRequestData(sequelize, DataTypes) {
 
   let managedArtistRequestConfig = {
     timestamps: false,
-    tableName: 'ManagedArtistRequest', // Name of the table in the database
+    tableName: 'ManagedArtistRequest', 
   };
 
   const ManagedArtistRequest = sequelize.define(
