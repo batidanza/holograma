@@ -1,7 +1,7 @@
 // userController.js
 const db = require('../database/models');
 
-const userController = {
+const usersController = {
   getUsers: async (req, res) => {
     try {
       const registeredUsers = await db.User.findAll();
@@ -37,4 +37,4 @@ const userController = {
 };
 
 
-module.exports = userController;
+module.exports = usersController;

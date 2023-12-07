@@ -5,7 +5,7 @@ const multer = require('multer');
 
 const { CloudinaryStorage } = require('multer-storage-cloudinary');
 
-const userController= require ('../controllers/userController');
+const usersController = require ('../controllers/usersController');
 
 cloudinary.config({ 
     cloud_name: 'dpnrapsvi', 
@@ -23,9 +23,9 @@ cloudinary.config({
 
   const upload = multer({ storage: storage });
 
-  router.get('/users', userController.getUsers);
+  router.get('/users', usersController.getUsers);
 
-  router.post('/createUser', userController.createUser)
+  router.post('/createUser', usersController.createUser)
 
 
 module.exports = router
