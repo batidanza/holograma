@@ -44,12 +44,10 @@ const createArtwork = async (req, res) => {
       ArtistID: newArtwork.ArtistID,
     });
 
-    res.json({ message: "Artwork created successfully" });
+    res.status(201).json({ message: "Artwork created successfully" });
   } catch (error) {
     console.error(error);
-    res
-      .status(500)
-      .json({ error: `Error publishing the artwork: ${error.message}` });
+    res.status(500).json({ error: "Error creating the artwork" });
   }
 };
 

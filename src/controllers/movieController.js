@@ -26,41 +26,32 @@ const getMovieById = async (req, res) => {
   }
 };
 
+
 const createMovie = async (req, res) => {
   try {
-    const {
-      Title,
-      Description,
-      ReleaseDate,
-      Genre,
-      DirectorID,
-      Duration,
-      ThumbnailURL,
-    } = req.body;
-    const VideoUpload = req.file;
-    const VideoURL = `https://res.cloudinary.com/dpnrapsvi/video/upload/${VideoUpload.filename}`;
+    const newVideo = req.body;
+    const videoUpload = req.files;
+    const firstVideo = videoUpload[0].filename;
+    const cloudinaryVideoUrl = `https://res.cloudinary.com/dpnrapsvi/image/upload/${firstVideo}`;
+    newVideo.ArtistID = req.body.ArtistID;
 
-    // Asegúrate de asignar un valor al campo DirectorID
-    // Puedes obtenerlo desde el cuerpo de la solicitud o de donde sea apropiado en tu lógica
-    const ArtistID = DirectorID;
-
-    const newMovie = await Movie.create({
-      Title,
-      Description,
-      ReleaseDate,
-      Genre,
-      ArtistID,
-      Duration,
-      VideoURL,
-      ThumbnailURL,
+    const newVideoEntry = await db.Movie.create({
+      Title: newVideo.Title,
+      Description: newVideo.Description,
+      RealiseDate: newVideo.RealiseDate,
+      VideoURL: cloudinaryVideoUrl,
+      ThumbnailURL:newVideo.ThumbnailURL,
+      Duration: newVideo.Duration,
+      Genre: newVideo.Genre,
+      ArtistID: newVideo.ArtistID,
     });
 
-    res
-      .status(201)
-      .json({ message: "Movie created successfully", movie: newMovie });
+    res.json({ message: "Artwork created successfully" });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Error creating the movie" });
+    res
+      .status(500)
+      .json({ error: `Error publishing the artwork: ${error.message}` });
   }
 };
 
