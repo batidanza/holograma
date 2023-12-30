@@ -5,7 +5,7 @@ const artistRoutes = require("./artistRoutes");
 const artworkRoutes = require("./artworkRoutes");
 const userRoutes = require("./userRoutes");
 const sketchRoutes = require("./sketchRoutes");
-const movieRoutes = require("./movieRoutes");
+const movieRoutes = require("./videoRoutes");
 
 router.use("/artists", artistRoutes);
 router.use("/artworks", artworkRoutes);
