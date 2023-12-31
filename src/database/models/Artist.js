@@ -58,6 +58,10 @@ function artistData(sequelize, DataTypes) {
       as: 'ManagedRequests',
       foreignKey: 'ArtistID',
     });
+    Artist.hasMany(models.Video, {
+      as: 'Videos',
+      foreignKey: 'ArtistID',
+    });
   };
 
   return Artist;

@@ -1,26 +1,56 @@
 function videoData(sequelize, DataTypes) {
-  let videoTableName = 'Video'; 
+  let videoTableName = 'Video';
 
   let videoColumns = {
-    id: {
+    ID: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
+      allowNull: false, 
     },
     VideoFile: {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    Title: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    Duration: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    Description: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+    },
+    Director: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    ArtistID: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'Artist',
+        key: 'ID',
+      },
+    },
   };
 
   let videoConfig = {
     timestamps: false,
-    tableName: 'Video', 
+    tableName: 'Video',
   };
 
   const Video = sequelize.define(videoTableName, videoColumns, videoConfig);
 
-  // Puedes definir asociaciones aquí si es necesario
+  Video.associate = function (models) {
+    Video.belongsTo(models.Artist, {
+      as: 'Artist',
+      foreignKey: 'ArtistID',
+    });
+  };
 
   return Video;
 }
