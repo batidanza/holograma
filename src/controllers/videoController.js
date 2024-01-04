@@ -38,7 +38,28 @@ const getVideos = async (req, res) => {
   }
 };
 
+const getVideosById = async (req, res) => {
+  try {
+    const videoId = req.params.id;
+    const videoDetails = await db.Video.findByPk(videoId, {
+      include: [{ model: db.Artist, as: "Artist" }],
+    });
+
+    if (!videoDetails) {
+      return res.status(404).json({ error: "Video not found" }); 
+    }
+
+    res.json(videoDetails);
+  } catch (error) {
+    console.error(error);
+    res
+      .status(500)
+      .json({ error: `Error obtaining Video details: ${error.message}` });
+  }
+};
+
 module.exports = {
   createVideo,
   getVideos,
+  getVideosById
 };

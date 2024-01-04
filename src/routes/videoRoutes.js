@@ -24,6 +24,8 @@ const videoCloudinaryUpload = multer({ storage: videoCloudinaryStorage });
 
 router.get("/movies", videoController.getVideos);
 
+router.get("/movies/:id", videoController.getVideosById);
+
 router.post("/createMovie", videoCloudinaryUpload.single("VideoFile"), videoController.createVideo);
 
 module.exports = router;

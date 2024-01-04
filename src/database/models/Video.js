@@ -1,4 +1,6 @@
-function videoData(sequelize, DataTypes) {
+const { DataTypes } = require('sequelize');
+
+function videoData(sequelize) {
   let videoTableName = 'Video';
 
   let videoColumns = {
@@ -11,6 +13,10 @@ function videoData(sequelize, DataTypes) {
     VideoFile: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    StreamingUrl: {
+      type: DataTypes.STRING, 
+      allowNull: true,
     },
     Title: {
       type: DataTypes.STRING,
