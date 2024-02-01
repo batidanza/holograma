@@ -21,28 +21,17 @@ function userData(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    FirstName: {
-      type: DataTypes.STRING,
-    },
-    LastName: {
-      type: DataTypes.STRING,
-    },
+
     DateOfBirth: {
       type: DataTypes.DATE,
-    },
-    Gender: {
-      type: DataTypes.ENUM('Male', 'Female', 'Other'),
-    },
-    Address: {
-      type: DataTypes.STRING,
     },
     PhoneNumber: {
       type: DataTypes.STRING(20),
     },
-    ProfileImageURL: {
+    Image: {
       type: DataTypes.STRING,
+      allowNull: false,
     },
-
   };
 
   let userConfig = {
@@ -63,6 +52,7 @@ function userData(sequelize, DataTypes) {
       foreignKey: 'AdministratorID',
     });
 
+    
     User.hasMany(models.ArtistRequest, {
       as: 'Requests',
       foreignKey: 'ArtistID',
