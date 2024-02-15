@@ -14,6 +14,10 @@ function videoData(sequelize) {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    VideoFile: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     StreamingUrl: {
       type: DataTypes.STRING, 
       allowNull: true,

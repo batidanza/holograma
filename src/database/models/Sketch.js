@@ -23,7 +23,10 @@ function sketchData(sequelize, DataTypes) {
       Image: {
         type: DataTypes.STRING,
       },
-   
+      FilePath: {
+        type: DataTypes.STRING,
+        allowNull: false, 
+      },
       ArtistID: {
         type: DataTypes.INTEGER,
         allowNull: false,

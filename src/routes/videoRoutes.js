@@ -16,7 +16,7 @@ const videoCloudinaryStorage = new CloudinaryStorage({
   params: {
     resource_type: "video",
     folder: "Movies",
-    allowed_formats: ["mp4", "webm", "ogg", "mov"],
+    allowed_formats: ["mp4", "webm", "ogg", "mov", "jpg", "png"],
   },
 });
 
@@ -26,6 +26,6 @@ router.get("/movies", videoController.getVideos);
 
 router.get("/movies/:id", videoController.getVideosById);
 
-router.post("/createMovie", videoCloudinaryUpload.single("VideoFile"), videoController.createVideo);
+router.post("/createMovie", videoCloudinaryUpload.single("VideoFile") , videoController.createVideo);
 
 module.exports = router;

@@ -3,17 +3,26 @@ const db = require("../database/models");
 const createVideo = async (req, res) => {
   try {
     const videoFileUpload = req.file;
+    const imageFileUpload = req.file; // Asegúrate de ajustar esto si el campo de imagen tiene un nombre diferente
 
-    if (!videoFileUpload) {
-      return res.status(400).json({ error: "No video file provided" });
+    if (!videoFileUpload || !imageFileUpload) {
+      return res.status(400).json({ error: "No video or image file provided" });
     }
 
-    const { Title, Duration, Description, Director, ArtistID } = req.body;
+    // Sube la imagen a Cloudinary
+    const imageUploadResponse = await cloudinary.uploader.upload(imageFileUpload.path);
 
+    // Obtiene la URL de la imagen de Cloudinary
+    const imageUrl = imageUploadResponse.secure_url;
+
+    // Otros datos del video
+    const { Title, Duration, Description, Director, ArtistID } = req.body;
     const videoUrl = videoFileUpload.path;
-    
+
+    // Crea una entrada de video en la base de datos
     const newVideoEntry = await db.Video.create({
       VideoFile: videoUrl,
+      Image: imageUrl, // Guarda la URL de la imagen
       Title: Title,
       Duration: Duration,
       Description: Description,
