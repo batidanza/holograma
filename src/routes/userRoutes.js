@@ -25,6 +25,8 @@ const upload = multer({ storage: storage });
 
 router.get("/user", userController.getUsers);
 
+router.post('/login', userController.loginUser);
+
 
 router.post(
   "/createUser",
