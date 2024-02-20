@@ -27,6 +27,8 @@ router.get("/user", userController.getUsers);
 
 router.post('/login', userController.loginUser);
 
+router.get("/profile", userController.getUserProfile);
+
 
 router.post(
   "/createUser",

@@ -44,7 +44,7 @@ const createUser = async (req, res) => {
     res.status(500).json({ error: `Error creating User ${error.message}` });
   }
 }
-  const loginUser = async (req, res) => {
+const loginUser = async (req, res) => {
   try {
     const { Username, Password } = req.body;
 
@@ -73,11 +73,43 @@ const createUser = async (req, res) => {
     res.status(500).json({ error: 'Error en el servidor' });
   }
 };
+const getUserProfile = async (req, res) => {
+  try {
+    // Obtener el token de autorización del encabezado de la solicitud
+    const token = req.headers.authorization;
+
+    // Verificar si el token está presente
+    if (!token) {
+      return res.status(401).json({ error: 'Token no proporcionado' });
+    }
+
+    // Decodificar el token para obtener el ID de usuario
+    const decodedToken = jwt.verify(token, 'your_secret_key');
+    const userId = decodedToken.userId;
+
+    // Buscar al usuario por ID en la base de datos
+    const user = await db.User.findByPk(userId);
+
+    // Verificar si el usuario existe
+    if (!user) {
+      return res.status(404).json({ error: 'Usuario no encontrado' });
+    }
+
+    // Devolver los datos del usuario
+    res.json({ user });
+  } catch (error) {
+    console.error(error);
+    // Manejar errores de token inválido o cualquier otro error
+    res.status(500).json({ error: 'Error en el servidor' });
+  }
+};
+
 
 
 module.exports = {
   getUsers,
   createUser,
-  loginUser
+  loginUser,
+  getUserProfile
 };
 

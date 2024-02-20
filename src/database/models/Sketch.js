@@ -51,3 +51,4 @@ function sketchData(sequelize, DataTypes) {
   }
   
   module.exports = sketchData;
+  
