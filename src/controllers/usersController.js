@@ -1,4 +1,3 @@
-// artistController.js
 const { validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken')
@@ -44,6 +43,7 @@ const createUser = async (req, res) => {
     res.status(500).json({ error: `Error creating User ${error.message}` });
   }
 }
+
 const loginUser = async (req, res) => {
   try {
     const { Username, Password } = req.body;
@@ -73,6 +73,7 @@ const loginUser = async (req, res) => {
     res.status(500).json({ error: 'Error en el servidor' });
   }
 };
+
 const getUserProfile = async (req, res) => {
   try {
     // Obtener el token de autorización del encabezado de la solicitud
@@ -104,12 +105,31 @@ const getUserProfile = async (req, res) => {
   }
 };
 
+const editUserProfile = async (req, res) => {
+  try {
+    const userId = req.params.userId; // Obtener el ID de usuario de los parámetros de la URL
+
+    // Recuperar los datos actualizados del usuario desde el cuerpo de la solicitud
+    const updatedUserProfile = req.body;
+
+    // Realizar la actualización en la base de datos
+    await db.User.update(updatedUserProfile, { where: { ID: userId } });
+
+    // Obtener el usuario actualizado
+    const updatedUser = await db.User.findByPk(userId);
+
+    res.json({ message: 'Perfil de usuario actualizado correctamente', user: updatedUser });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Error al actualizar el perfil de usuario' });
+  }
+};
 
 
 module.exports = {
   getUsers,
   createUser,
   loginUser,
-  getUserProfile
+  getUserProfile,
+  editUserProfile, // Agregar la función editUserProfile al export
 };
-

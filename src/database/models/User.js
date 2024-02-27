@@ -32,6 +32,10 @@ function userData(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    Bio: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+    }
   };
 
   let userConfig = {
@@ -52,10 +56,15 @@ function userData(sequelize, DataTypes) {
       foreignKey: 'AdministratorID',
     });
 
-    
     User.hasMany(models.ArtistRequest, {
       as: 'Requests',
       foreignKey: 'ArtistID',
+    });
+
+    // Define the association with the Media model
+    User.hasMany(models.Media, {
+      as: 'Media',
+      foreignKey: 'UserID',
     });
   };
 
