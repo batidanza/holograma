@@ -29,4 +29,6 @@ router.get("/media", mediaController.getAllMedia)
 // Ruta para subir una imagen
 router.post("/upload", upload.array("Image"), mediaController.uploadMedia);
 
+router.get("/byUser/:userId", mediaController.getMediaByUser);
+
 module.exports = router;

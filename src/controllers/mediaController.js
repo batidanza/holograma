@@ -13,6 +13,23 @@ const getAllMedia = async (req, res) => {
     }
   };
 
+  const getMediaByUser = async (req, res) => {
+    try {
+      const userId = req.params.userId;
+      const media = await db.Media.findAll({
+        where: { UserID: userId },
+      });
+      res.json(media);
+    } catch (error) {
+      console.error(
+        `Error obtaining media photos for user with ID ${req.params.mediaId}:`,
+        error
+      );
+      res.status(500).json({ error: "Error obtaining media for user" });
+    }
+  };
+
+
   const uploadMedia = async (req, res) => {
     try {
       // Verificar si se cargó un archivo
@@ -42,5 +59,6 @@ const getAllMedia = async (req, res) => {
 
 module.exports = {
   uploadMedia,
-  getAllMedia
+  getAllMedia,
+  getMediaByUser
 };
