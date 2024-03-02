@@ -24,9 +24,11 @@ function userData(sequelize, DataTypes) {
 
     DateOfBirth: {
       type: DataTypes.DATE,
+      allowNull: true,
     },
     PhoneNumber: {
       type: DataTypes.STRING(20),
+      allowNull: true,
     },
     Image: {
       type: DataTypes.STRING,

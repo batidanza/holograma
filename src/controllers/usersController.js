@@ -32,8 +32,6 @@ const createUser = async (req, res) => {
       Username: newUser.Username,
       Email: newUser.Email,
       Password: hashedPassword, // Usar la contraseña hasheada
-      DateOfBirth: newUser.DateOfBirth,
-      PhoneNumber: newUser.PhoneNumber,
       Image: cloudinaryImageUrl, 
     });
     
