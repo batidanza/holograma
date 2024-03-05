@@ -29,6 +29,8 @@ router.post("/login", userController.loginUser);
 
 router.get("/profile", userController.getUserProfile);
 
+router.get("/users/:username", userController.getUserProfileByUsername);
+
 router.put('/user/:userId/edit',  upload.array("Image"), userController.editUserProfile);
 
 router.post("/createUser", upload.array("Image"), userController.createUser);

@@ -13,6 +13,27 @@ const getUsers = async (req, res) => {
   }
 };
 
+const getUserProfileByUsername = async (req, res) => {
+  try {
+    const { username } = req.params;
+
+    // Buscar al usuario por nombre de usuario en la base de datos
+    const user = await db.User.findOne({ where: { Username: username } });
+
+    // Verificar si el usuario existe
+    if (!user) {
+      return res.status(404).json({ error: 'Usuario no encontrado' });
+    }
+
+    // Devolver los datos del usuario
+    res.json({ user });
+  } catch (error) {
+    console.error(error);
+    // Manejar errores de token inválido o cualquier otro error
+    res.status(500).json({ error: 'Error en el servidor' });
+  }
+};
+
 
 const createUser = async (req, res) => {
   try {
@@ -130,4 +151,5 @@ module.exports = {
   loginUser,
   getUserProfile,
   editUserProfile, // Agregar la función editUserProfile al export
+  getUserProfileByUsername
 };
