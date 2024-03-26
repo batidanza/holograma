@@ -22,8 +22,6 @@ router.get("/artworks/:id", artworkController.getArtworkById);
 
 router.get("/byArtist/:artistId", artworkController.getArtworksByArtist);
 
-router.get("/createArtwork", artworkController.createArt);
-
 router.post(
   "/createArtwork",
   imageCloudinaryUpload.array("Image"),
