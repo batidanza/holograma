@@ -1,9 +1,12 @@
 {
+  "homepage": "https://batitaki.github.io/holograma",
   "name": "holograma",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
   "scripts": {
+   "predeploy": "npm run build",
+   "deploy": "gh-pages -d build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npx nodemon",
     "dev": "nodemon app.js"
