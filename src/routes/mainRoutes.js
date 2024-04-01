@@ -8,6 +8,10 @@ const movieRoutes = require("./videoRoutes");
 const sketchRoutes = require("./sketchRoutes")
 const mediaRoutes = require("./mediaRoutes")
 
+router.get("/", (req, res) => {
+    res.send("Welcome to the root URL");
+  });
+
 router.use("/artists", artistRoutes);
 router.use("/artworks", artworkRoutes);
 router.use("/users", userRoutes);
