@@ -14,9 +14,9 @@ module.exports = {
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
+    "username": "holograma_",
+    "password": "shangai888",
+    "database": "holograma_444",
     "host": "mysql-holograma.alwaysdata.net",
     "dialect": "mysql"
   }
