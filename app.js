@@ -39,8 +39,5 @@ db.sequelize
 
 app.use('/', mainRoutes);
 
-router.get('/', (req, res) => {
-  res.send('¡Hola desde la ruta raíz!');
-});
 
 app.listen(3002, () => console.log('Server running'));
