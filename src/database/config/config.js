@@ -1,23 +1,27 @@
+require('dotenv').config();
+console.log(process.env.DEV_DB_USERNAME);
+
 module.exports = {
   "development": {
-    "username": "holograma",
-    "password": "Holograma1406TE",
-    "database": "holograma_444",
+    "username": process.env.DEV_DB_USERNAME,
+    "password": process.env.DEV_DB_PASSWORD,
+    "database": process.env.DEV_DB_DATABASE,
     "host": "mysql-holograma.alwaysdata.net",
     "dialect": "mysql"
   },
   "test": {
-    "username": "root",
-    "password": null,
-    "database": "database_test",
+    "username": process.env.TEST_DB_USERNAME,
+    "password": process.env.TEST_DB_PASSWORD,
+    "database": process.env.TEST_DB_DATABASE,
     "host": "mysql-holograma.alwaysdata.net",
     "dialect": "mysql"
   },
   "production": {
-    "username": "holograma_",
-    "password": "shangai888",
-    "database": "holograma_444",
+    "username": process.env.PROD_DB_USERNAME,
+    "password": process.env.PROD_DB_PASSWORD,
+    "database": process.env.PROD_DB_DATABASE,
     "host": "mysql-holograma.alwaysdata.net",
     "dialect": "mysql"
   }
-}
+};
+
