@@ -35,6 +35,7 @@ const createSketch = async (req, res) => {
       Description: newSketch.Description,
       Image: cloudinaryImageUrl,
       ArtistID: newSketch.ArtistID,
+      FilePath: newSketch.FilePath,
     });
 
     res.json({ message: "Sketch created successfully" });
