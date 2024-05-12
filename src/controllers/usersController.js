@@ -68,7 +68,6 @@ const loginUser = async (req, res) => {
       return res.status(401).json({ error: 'Usuario no encontrado' });
     }
 
-  
     const passwordMatch = await bcrypt.compare(Password, user.Password);
     if (!passwordMatch) {
       return res.status(401).json({ error: 'Contraseña incorrecta' });
@@ -125,7 +124,6 @@ const editUserProfile = async (req, res) => {
     res.status(500).json({ error: 'Error al actualizar el perfil de usuario' });
   }
 };
-
 
 module.exports = {
   getUsers,

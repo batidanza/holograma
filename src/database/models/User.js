@@ -48,22 +48,7 @@ function userData(sequelize, DataTypes) {
   const User = sequelize.define(userTableName, userColumns, userConfig);
 
   User.associate = function (models) {
-    User.hasMany(models.Transaction, {
-      as: 'Transactions',
-      foreignKey: 'ClientID',
-    });
 
-    User.hasMany(models.ManagedArtistRequest, {
-      as: 'ManagedArtistRequests',
-      foreignKey: 'AdministratorID',
-    });
-
-    User.hasMany(models.ArtistRequest, {
-      as: 'Requests',
-      foreignKey: 'ArtistID',
-    });
-
-    // Define the association with the Media model
     User.hasMany(models.Media, {
       as: 'Media',
       foreignKey: 'UserID',

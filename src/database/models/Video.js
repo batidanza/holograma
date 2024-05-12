@@ -38,14 +38,7 @@ function videoData(sequelize) {
       type: DataTypes.STRING,
       allowNull: true,
     },
-    ArtistID: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: 'Artist',
-        key: 'ID',
-      },
-    },
+    
   };
 
   let videoConfig = {
@@ -55,12 +48,6 @@ function videoData(sequelize) {
 
   const Video = sequelize.define(videoTableName, videoColumns, videoConfig);
 
-  Video.associate = function (models) {
-    Video.belongsTo(models.Artist, {
-      as: 'Artist',
-      foreignKey: 'ArtistID',
-    });
-  };
 
   return Video;
 }

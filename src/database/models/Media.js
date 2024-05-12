@@ -8,7 +8,7 @@ function mediaData(sequelize, DataTypes) {
       autoIncrement: true,
     },
     Image: {
-      type: DataTypes.STRING, // O el tipo de dato adecuado para almacenar la URL o ruta de la imagen
+      type: DataTypes.STRING,
       allowNull: false,
     },
     UploadDate: {
@@ -29,10 +29,10 @@ function mediaData(sequelize, DataTypes) {
   const Media = sequelize.define(mediaTableName, mediaColumns, mediaConfig);
 
   Media.associate = function(models) {
-    // Definir la asociación con el modelo User
+
     Media.belongsTo(models.User, {
       foreignKey: 'UserID',
-      as: 'User' // Nombre del alias para la asociación
+      as: 'User'
     });
   };
 
