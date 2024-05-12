@@ -10,14 +10,15 @@ const mainRoutes = require('./src/routes/mainRoutes');
 
 
 const app = express();
+const PORT = process.env.PORT || 3977;
 
 app.use(express.static(path.resolve(__dirname, './public')));
 
 app.set('view engine', 'ejs');
 app.use(cors());
 
-app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(methodOverride('_method'));
@@ -41,4 +42,4 @@ db.sequelize
 app.use('/', mainRoutes);
 
 
-app.listen(3002, () => console.log('Server running'));
+app.listen(PORT, () => console.log(`tu server esta listo en el puerto ${PORT}`));
