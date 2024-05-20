@@ -1,7 +1,10 @@
 const { validationResult } = require('express-validator');
+require('dotenv').config();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken')
 const db = require('../database/models');
+
+const SECRET_KEY = process.env.SECRET_KEY; 
 
 const getUsers = async (req, res) => {
   try {
@@ -78,7 +81,7 @@ const loginUser = async (req, res) => {
       return res.status(401).json({ error: 'Contraseña incorrecta' });
     }
 
-    const token = jwt.sign({ userId: user.ID }, 'your_secret_key', { expiresIn: '1h' });
+    const token = jwt.sign({ userId: user.ID }, SECRET_KEY , { expiresIn: '1h' });
 
     res.json({ token, user }); 
 
@@ -109,14 +112,10 @@ const getUserById = async (req, res) => {
 const getUserProfile = async (req, res) => {
   try {
 
-    const token = req.headers.authorization;
+    const token = req.headers.authorization.split(" ")[1]
+    const payload = jwt.verify(token, SECRET_KEY );
 
-    if (!token) {
-      return res.status(401).json({ error: 'Token no proporcionado' });
-    }
-
-    const decodedToken = jwt.verify(token, 'your_secret_key');
-    const userId = decodedToken.userId;
+    const userId = payload.userId;
 
     const user = await db.User.findByPk(userId);
 
@@ -130,6 +129,7 @@ const getUserProfile = async (req, res) => {
     res.status(500).json({ error: 'Error en el servidor' });
   }
 };
+
 
 const editUserProfile = async (req, res) => {
   try {
@@ -157,3 +157,4 @@ module.exports = {
   getUserProfileByUsername,
   getUserById 
 };
+
