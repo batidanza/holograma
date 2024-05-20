@@ -15,15 +15,20 @@ const getUsers = async (req, res) => {
 
 const getUserProfileByUsername = async (req, res) => {
   try {
-    const { username } = req.params;
+    let { username } = req.params;
+    username = username.trim(); // Eliminar espacios en blanco al principio y al final
+
+    console.log("Buscando usuario con el nombre de usuario:", username);
 
     const user = await db.User.findOne({ where: { Username: username } });
+
+    console.log("Usuario encontrado en la base de datos:", user);
 
     if (!user) {
       return res.status(404).json({ error: 'Usuario no encontrado' });
     }
 
-    res.json({ user });
+    res.json( { user } );
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Error en el servidor' });
@@ -83,6 +88,24 @@ const loginUser = async (req, res) => {
   }
 };
 
+const getUserById = async (req, res) => {
+  try {
+    const userId = req.params.userId;
+
+    const user = await db.User.findByPk(userId);
+
+    if (!user) {
+      return res.status(404).json({ error: 'Usuario no encontrado' });
+    }
+
+    res.json(user); // Envía el objeto user directamente
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Error en el servidor' });
+  }
+};
+
+
 const getUserProfile = async (req, res) => {
   try {
 
@@ -131,5 +154,6 @@ module.exports = {
   loginUser,
   getUserProfile,
   editUserProfile, 
-  getUserProfileByUsername
+  getUserProfileByUsername,
+  getUserById 
 };

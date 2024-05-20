@@ -29,7 +29,9 @@ router.post("/login", userController.loginUser);
 
 router.get("/profile", userController.getUserProfile);
 
-router.get("/users/:username", userController.getUserProfileByUsername);
+router.get("/users/:userId", userController.getUserById);
+
+router.get("/profile-searched/:username", userController.getUserProfileByUsername);
 
 router.put('/user/:userId/edit',  upload.array("Image"), userController.editUserProfile);
 
