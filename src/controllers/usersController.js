@@ -101,7 +101,7 @@ const getUserById = async (req, res) => {
       return res.status(404).json({ error: 'Usuario no encontrado' });
     }
 
-    res.json(user); // Envía el objeto user directamente
+    res.json(user); 
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Error en el servidor' });
