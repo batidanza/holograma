@@ -42,13 +42,16 @@ const getUserProfileByUsername = async (req, res) => {
 const createUser = async (req, res) => {
   try {
     const newUser = req.body;
-  
+
     console.log("Values received in req.body:", newUser);
 
-    const userImageUpload = req.files; 
-    const firstImage = userImageUpload[0].filename;
+    if (!req.files || req.files.length === 0) {
+      return res.status(400).json({ error: "No se ha proporcionado ninguna imagen" });
+    }
 
-    const cloudinaryImageUrl = `https://res.cloudinary.com/dpnrapsvi/image/upload/${firstImage}`;
+    const userImageUpload = req.files[0];
+    
+    const imagePath = userImageUpload.path;
 
     const hashedPassword = await bcrypt.hash(newUser.Password, 10);
     
@@ -56,15 +59,15 @@ const createUser = async (req, res) => {
       Username: newUser.Username,
       Email: newUser.Email,
       Password: hashedPassword,
-      Image: cloudinaryImageUrl, 
+      Image: imagePath, 
     });
     
-    res.json({ message: "User created successfully" }); 
+    res.json({ message: "User created successfully", user: newUserRequest }); 
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: `Error creating User ${error.message}` });
   }
-}
+};
 
 const loginUser = async (req, res) => {
   try {

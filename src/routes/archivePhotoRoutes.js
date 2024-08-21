@@ -8,9 +8,9 @@ const archivePhotoController = require("../controllers/archivePhotoController");
 
 // Configurar Cloudinary
 cloudinary.config({
-  cloud_name: "dlmwxlrn8",
-  api_key: "983474745932756",
-  api_secret: "OPy646OEXVS-x8bO_XKq5PhG48c",
+  cloud_name: "dpnrapsvi",
+  api_key: "874593837933416",
+  api_secret: "c_a2SUynA5J4O6y5yFCbL6HzADA",
 });
 
 // Configurar almacenamiento de Cloudinary

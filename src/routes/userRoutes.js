@@ -16,7 +16,7 @@ cloudinary.config({
 const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
-    folder: "Artistas",
+    folder: "Media",
     resource_type: "auto",
   },
 });
